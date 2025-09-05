@@ -1,27 +1,30 @@
+:!toc:
 = Your first Network Ansible Playbook
 
-== For this challenge we will examine an already created Ansible Playbook
+For this challenge we will examine an already created Ansible Playbook
 
-=== Ansible Network Automation Basics
+== Ansible Network Automation Basics
 
 The lab objective is to use Ansible Automation to update the configuration of a Cisco CSR router. This exercise will not create an Ansible Playbook, but use an existing one that has been provided.
 
-This exercise will cover:
+*This exercise will cover:*
 
-- examining an existing Ansible Playbook
-- executing an Ansible Playbook on the command line using the ansible-navigator command
-- check mode (the `--check` parameter)
-- verbose mode (the `--verbose` or -v parameter)
+* examining an existing Ansible Playbook
+* executing an Ansible Playbook on the command line using the ansible-navigator command
+* check mode (the `--check` parameter)
+* verbose mode (the `--verbose` or -v parameter)
 
-=== What makes up an Ansible Playbook?
+=== Ansible Playbook
 
+* *What makes up an Ansible Playbook?*
++
 image::https://github.com/IPvSean/pictures_for_github/blob/master/what_makes_up_playbook.png?raw=true[]
 
 
-=== Ansible Plays
+=== *Ansible Plays*
 
-What am I automating?
-
+* *What am I automating?*
++
 [source,yaml]
 ----
 ---
@@ -30,20 +33,20 @@ What am I automating?
   become: yes
 ----
 
-*What are they?*
+* *What are they?*
 
-- _Top level specification for a group of tasks._
+** _Top level specification for a group of tasks._
++
+Will tell that play which hosts it will execute on and control behavior such as fact gathering or privilege level.
 
-  Will tell that play which hosts it will execute on and control behavior such as fact gathering or privilege level.
-
-- _Building blocks for playbooks_
-
-  Multiple plays can exist within an Ansible playbook
+** _Building blocks for playbooks_
++
+Multiple plays can exist within an Ansible playbook
 
 === Ansible Modules
 
-_The "tools in the toolkit"_
-
+* _The "tools in the toolkit"_
++
 ----
     - name: ensure that the desired snmp strings are present
       cisco.ios.config:
@@ -52,28 +55,30 @@ _The "tools in the toolkit"_
           - snmp-server community ansible-private RW
 ----
 
-*What are they?*
-
+* *What are they?*
++
 Parametrized components with internal logic, representing a single step to be done.
 The modules "do" things in Ansible.
 
-*Language*
 
 === Ansible Plugins
 
-*What are they?*
+* *What are they?*
++
 Plugins are pieces of code that augment
 Ansible's core functionality. Ansible uses a plugin architecture to enable a rich, flexible, and expandable feature set.
-
++
+----
 {{ some_variable | `to_nice_json` }} +
 {{ some_variable | `to_nice_yaml` }}
+----
 
 === Ansible Inventory
 
-*What are they?*
-
+* *What are they?*
++
 List of systems in your infrastructure that automation is executed against
-
++
 ----
 [web]
 webserver1.example.com
@@ -98,16 +103,16 @@ leaf02.internal.com
     - network.toolkit.backup
 ----
 
-*What are they?*
-
+* *What are they?*
++
 Group your tasks and variables of your automation in a reusable structure. Write roles once, and share them with others who have similar challenges in front of them.
 
 === Ansible Content Collections
 
 _Simplified and consistent content delivery_
 
-*What are they?*
-
+* *What are they?*
++
 Collections are a directory structure containing automation content such as:
 - Modules
 - Playbooks

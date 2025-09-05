@@ -1,7 +1,8 @@
-:lab_name: Network automation basics: First playbook
+:!toc:
+:lab_name: Network automation basics
+:lab_name2: First playbook
 
-
-= image:https://github.com/network-automation/networking-icons/blob/master/switches/switch_red_small.png?raw=true[] {lab_name}
+= {lab_name}: {lab_name2}
 
 
 Learn the fundamentals of Red Hat Ansible Automation Platform for network automation using ansible-navigator.
@@ -16,3 +17,6 @@ The lab objective is to use Ansible Automation to update the configuration of a 
 - executing an Ansible Playbook on the command line using the ansible-navigator command
 - check mode (the `--check` parameter)
 - verbose mode (the `--verbose` or -v parameter)
+
+
+// image:https://github.com/network-automation/networking-icons/blob/master/switches/switch_red_small.png?raw=true[] 

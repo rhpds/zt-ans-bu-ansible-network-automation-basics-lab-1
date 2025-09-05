@@ -109,7 +109,6 @@ su - $USER -c 'cat >/home/$USER/.local/share/code-server/User/settings.json <<EO
   "files.exclude": {
     "**/.*": true
   },
-  "window.autoDetectColorScheme": true,
   "security.workspace.trust.enabled": false
 }
 EOL
