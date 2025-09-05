@@ -4,29 +4,25 @@ site:
   url: https://redhat-scholars.github.io/course-template
   start_page: modules::index.adoc
 
+asciidoc:
+  attributes:
+    lab_name: "Network automation basics: First playbook"
+    release-version: master
+    page-pagination: true
+
 content:
   sources:
-    - url: .
+    - url: ./
       start_path: content
 
 ui:
   bundle:
-    url: https://github.com/rhpds/rhdp_showroom_theme/releases/download/v0.0.1/ui-bundle.zip
+    # url: https://github.com/rhpds/rhdp_showroom_theme/releases/download/v0.0.1/ui-bundle.zip
+    url: https://github.com/rhpds/nookbag-bundle/releases/download/v0.0.3/ui-bundle.zip
     snapshot: true
-  # supplemental_files:
-  #   - path: ./content/supplemental-ui
-  #   - path: ./content/lib
-  #   - path: .nojekyll
-  #   - path: ui.yml
-  #     contents: "static_files: [ .nojekyll ]"
+
+output:
+  dir: ./www/www
 
 runtime:
   cache_dir: ./.cache/antora
-
-antora:
-  extensions:
-    - require: ./content/lib/dev-mode.js
-      enabled: false
-
-output:
-  dir: ./www
