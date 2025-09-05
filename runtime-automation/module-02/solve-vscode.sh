@@ -1,6 +1,6 @@
 #!/bin/bash
 
-tee /tmp/setup-scriptssolve_challenege_2.yml << EOF
+tee /tmp/setup-scripts/solve_challenege_2.yml << EOF
 
 ---
 - name: snmp ro/rw string configuration
@@ -17,5 +17,5 @@ tee /tmp/setup-scriptssolve_challenege_2.yml << EOF
           - snmp-server community ansible-test RO
 
 EOF
-sudo chown rhel:rhel /tmp/setup-scriptssolve_challenege_2.yml
-su - rhel -c 'ansible-navigator run  /tmp/setup-scriptssolve_challenege_2.yml --mode stdout'
+sudo chown rhel:rhel /tmp/setup-scripts/solve_challenege_2.yml
+su - rhel -c 'ansible-navigator run  /tmp/setup-scripts/solve_challenege_2.yml --mode stdout'
