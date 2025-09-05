@@ -145,6 +145,7 @@ snmp-server community ansible-private RW
 
 * Open the terminal tab and run the following command:
 +
+[source,shell]
 ----
 ansible-navigator run playbook.yml --mode stdout
 ----
@@ -156,8 +157,13 @@ NOTE: `--mode stdout` - By default ansible-navigator will run in interactive mod
 
 * Login to the cisco device and run the show run command to check the configuration:
 +
+[source,shell]
 ----
 ssh cisco
+----
++
+[source,shell]
+----
 show running | i snmp
 ----
 +
@@ -165,4 +171,9 @@ show running | i snmp
 ----
 snmp-server community ansible-public RO
 snmp-server community ansible-private RW
+----
++
+[source,shell]
+----
+exit
 ----

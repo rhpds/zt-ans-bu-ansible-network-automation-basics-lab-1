@@ -119,19 +119,19 @@ su - $USER -c 'cat >/home/$USER/ansible-navigator.yml <<EOL
 ---
 ansible-navigator:
   ansible:
-    inventories:
-    - /home/$USER/hosts
+    inventory:
+      entries:
+        - /home/rhel/hosts
   execution-environment:
     container-engine: podman
+    enabled: true
     image: ee-supported-rhel8
-    enabled: True
-    pull-policy: never
-
-  playbook-artifact:
-    save-as: /home/rhel/playbook-artifacts/{playbook_name}-artifact-{ts_utc}.json
-
+    pull:
+      policy: never
   logging:
     level: debug
+  playbook-artifact:
+    save-as: /home/rhel/playbook-artifacts/{playbook_name}-artifact-{time_stamp}.json
 
 EOL
 cat /home/$USER/ansible-navigator.yml'
