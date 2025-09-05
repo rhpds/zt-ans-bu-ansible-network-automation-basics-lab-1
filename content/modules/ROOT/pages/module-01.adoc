@@ -48,11 +48,11 @@ Multiple plays can exist within an Ansible playbook
 * _The "tools in the toolkit"_
 +
 ----
-    - name: ensure that the desired snmp strings are present
-      cisco.ios.config:
-        commands:
-          - snmp-server community ansible-public RO
-          - snmp-server community ansible-private RW
+- name: ensure that the desired snmp strings are present
+  cisco.ios.config:
+    commands:
+      - snmp-server community ansible-public RO
+      - snmp-server community ansible-private RW
 ----
 
 * *What are they?*
@@ -149,7 +149,7 @@ snmp-server community ansible-private RW
 ansible-navigator run playbook.yml --mode stdout
 ----
 
-
++
 NOTE: `--mode stdout` - By default ansible-navigator will run in interactive mode. The default behavior can be modified by modifying the ansible-navigator.yml configuration file. As playbooks get longer and involve multiple hosts the interactive mode allows you to "zoom in" on data in real-time, filter it, and navigate between various Ansible components. Since this task only ran one task on one host the stdout is sufficient.
 
 === Step 3 - Verify configuration on router
