@@ -1,8 +1,4 @@
-:!toc:
-:lab_name: Network automation basics
-:lab_name2: First playbook
-
-= {lab_name}: {lab_name2}
+= {lab_name}
 
 
 Learn the fundamentals of Red Hat Ansible Automation Platform for network automation using ansible-navigator.
