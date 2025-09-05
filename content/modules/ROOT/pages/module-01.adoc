@@ -93,7 +93,8 @@ leaf02.internal.com
 ----
 
 === Ansible Roles
-
+* *What are they?*
++
 [source,yaml]
 ----
 ---
@@ -103,7 +104,7 @@ leaf02.internal.com
     - network.toolkit.backup
 ----
 
-* *What are they?*
+
 +
 Group your tasks and variables of your automation in a reusable structure. Write roles once, and share them with others who have similar challenges in front of them.
 
@@ -122,43 +123,45 @@ Collections are a directory structure containing automation content such as:
 - Tests
 
 
-=== Lets get started
+== Lets get started
 
 That is the end of of your lab briefing!
 
-Once the lab is setup you can click the Green start button image:https://github.com/IPvSean/pictures_for_github/blob/master/start_button.png?raw=true[width=100px,align=left] in the bottom right corner of this window.
+// Once the lab is setup you can click the Green start button image:https://github.com/IPvSean/pictures_for_github/blob/master/start_button.png?raw=true[width=100px,align=left] in the bottom right corner of this window.
 
 
-== Step 1 - Examine Ansible Playbook
+=== Step 1 - Examine Ansible Playbook
 
-Open the `playbook.yml` in the code-server tab.
-
+* Open the `playbook.yml` in the code-server tab.
++
 We will explore in detail the components of an Ansible Playbook in the next exercise. It is suffice for now to see that this playbook will run two Cisco IOS-XE commands:
-
++
 ----
 snmp-server community ansible-public RO
 snmp-server community ansible-private RW
 ----
 
-== Step 2 - Execute Ansible Playbook
+=== Step 2 - Execute Ansible Playbook
 
-Open the terminal tab and run the following command:
-
+* Open the terminal tab and run the following command:
++
 ----
 ansible-navigator run playbook.yml --mode stdout
 ----
 
 
-- `--mode stdout` - By default ansible-navigator will run in interactive mode. The default behavior can be modified by modifying the ansible-navigator.yml configuration file. As playbooks get longer and involve multiple hosts the interactive mode allows you to "zoom in" on data in real-time, filter it, and navigate between various Ansible components. Since this task only ran one task on one host the stdout is sufficient.
+NOTE: `--mode stdout` - By default ansible-navigator will run in interactive mode. The default behavior can be modified by modifying the ansible-navigator.yml configuration file. As playbooks get longer and involve multiple hosts the interactive mode allows you to "zoom in" on data in real-time, filter it, and navigate between various Ansible components. Since this task only ran one task on one host the stdout is sufficient.
 
-== Step 3 - Verify configuration on router
+=== Step 3 - Verify configuration on router
 
-Login to the cisco device and run the show run command to check the configuration:
+* Login to the cisco device and run the show run command to check the configuration:
++
 ----
 ssh cisco
 show running | i snmp
 ----
-Output should be similar to the following:
++
+.Output should be similar to the following:
 ----
 snmp-server community ansible-public RO
 snmp-server community ansible-private RW
