@@ -84,7 +84,7 @@ ansible-navigator:
     enabled: true
     image: ee-supported-rhel8
     pull:
-      policy: never
+      policy: missing
   logging:
     level: debug
   playbook-artifact:
