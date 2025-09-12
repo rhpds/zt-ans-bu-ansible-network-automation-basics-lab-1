@@ -44,8 +44,12 @@ su - $USER -c 'cat >/home/$USER/.local/share/code-server/User/settings.json <<EO
     "**/.*": true
   },
   "security.workspace.trust.enabled": false,
-  "redhat.telemetry.enabled": true,
-  "ansible.validation.lint.enabled": false
+  "redhat.telemetry.enabled": false,
+  "ansibleLint.enabled": false,
+  "ansible.validation.lint.enabled": false,
+  "ansible.validation.enabled": false,
+  "ansible.lightspeed.enabled": false,
+  "ansible.lightspeed.suggestions.enabled": false
 }
 EOL
 cat /home/$USER/.local/share/code-server/User/settings.json'
