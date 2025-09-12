@@ -46,7 +46,7 @@ Check out the https://docs.ansible.com/ansible/latest/reference_appendices/gloss
 
 * To validate the concept of idempotency, re-run the playbook:
 +
-[source,shell]
+[source,bash]
 ----
 ansible-navigator run playbook.yml --mode stdout
 ----
@@ -78,7 +78,7 @@ IMPORTANT: Make sure to save the playbook.yml with the change.
 
 * This time however, instead of running the playbook to push the change to the device, execute it using the --check flag in combination with the -v or verbose mode flag:
 +
-[source,shell]
+[source,bash]
 ----
 ansible-navigator run playbook.yml --mode stdout --check -v
 ----
@@ -89,12 +89,12 @@ NOTE: The `--check mode` in combination with the `--verbose` flag will display t
 
 * Verify that the Ansible Playbook did not apply the ansible-test community. Login to `cisco` and check the running configuration on the Cisco IOS-XE device.
 +
-[source,shell]
+[source,bash]
 ----
 ssh cisco
 ----
 +
-[source,shell]
+[source,bash]
 ----
 show run | i snmp
 ----
@@ -105,7 +105,7 @@ snmp-server community ansible-public RO
 snmp-server community ansible-private RW
 ----
 +
-[source,shell]
+[source,bash]
 ----
 exit
 ----
@@ -113,7 +113,7 @@ exit
 
 * Finally re-run this playbook again without the -v or --check flag to push the changes.
 +
-[source,shell]
+[source,bash]
 ----
 ansible-navigator run playbook.yml --mode stdout
 ----
@@ -136,7 +136,7 @@ snmp-server community ansible-private RW
 snmp-server community ansible-test RO
 ----
 +
-[source,shell]
+[source,bash]
 ----
 exit
 ----
