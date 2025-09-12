@@ -31,4 +31,5 @@ if [ $? -eq 0 ]; then
     echo OK
 else
     echo "SNMP configuration was not applied - please try again or use SKIP"
+    exit 1
 fi
