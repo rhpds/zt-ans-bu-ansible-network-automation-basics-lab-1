@@ -119,6 +119,7 @@ host_key_checking = False
 collections_on_ansible_version_mismatch = ignore
 retry_files_enabled = False
 interpreter_python = auto_silent
+
 [persistent_connection]
 connect_timeout = 200
 command_timeout = 200

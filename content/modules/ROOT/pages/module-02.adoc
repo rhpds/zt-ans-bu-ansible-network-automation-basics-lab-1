@@ -68,7 +68,7 @@ Unless another operator or process removes or modifies the existing configuratio
 +
 [source,yaml]
 ----
-snmp-server community ansible-test RO
+- snmp-server community ansible-test RO
 ----
 
 +
@@ -109,6 +109,7 @@ snmp-server community ansible-private RW
 ----
 exit
 ----
+
 == Step 5 - Re-run the Ansible Playbook
 
 * Finally re-run this playbook again without the -v or --check flag to push the changes.
@@ -121,10 +122,12 @@ ansible-navigator run playbook.yml --mode stdout
 == Step 6 - Verify Config is present
 * Feel free to cut and paste the following command.
 +
+[source,bash]
 ----
 ssh cisco
 ----
 +
+[source,bash]
 ----
 sh run | i snmp
 ----
