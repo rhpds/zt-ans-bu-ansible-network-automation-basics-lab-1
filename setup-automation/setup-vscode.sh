@@ -43,7 +43,9 @@ su - $USER -c 'cat >/home/$USER/.local/share/code-server/User/settings.json <<EO
   "files.exclude": {
     "**/.*": true
   },
-  "security.workspace.trust.enabled": false
+  "security.workspace.trust.enabled": false,
+  "redhat.telemetry.enabled": true,
+  "ansible.validation.lint.enabled": false
 }
 EOL
 cat /home/$USER/.local/share/code-server/User/settings.json'
