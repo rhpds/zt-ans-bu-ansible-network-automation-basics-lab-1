@@ -1,14 +1,13 @@
 #!/bin/bash
 
-tee /tmp/setup-scripts/solve_challenege_2.yml << EOF
+USER=rhel
 
+su - $USER -c 'cat > /home/rhel/playbook.yml << EOF
 ---
 - name: snmp ro/rw string configuration
   hosts: cisco
   gather_facts: no
-
   tasks:
-
     - name: ensure that the desired snmp strings are present
       cisco.ios.config:
         commands:
@@ -17,5 +16,6 @@ tee /tmp/setup-scripts/solve_challenege_2.yml << EOF
           - snmp-server community ansible-test RO
 
 EOF
-sudo chown rhel:rhel /tmp/setup-scripts/solve_challenege_2.yml
-su - rhel -c 'ansible-navigator run  /tmp/setup-scripts/solve_challenege_2.yml --mode stdout'
+cat /home/rhel/playbook.yml'
+
+su - $USER -c 'ansible-navigator run  /home/rhel/playbook.yml --mode stdout'
