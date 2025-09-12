@@ -19,6 +19,7 @@ su - $USER -c 'cat >/home/rhel/.config/code-server/config.yaml << EOF
 bind-addr: 0.0.0.0:8080
 auth: none
 cert: false
+disable-update-check: true
 EOF'
 
 su - $USER -c 'cat >/home/$USER/.local/share/code-server/User/settings.json <<EOL
