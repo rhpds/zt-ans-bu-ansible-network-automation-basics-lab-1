@@ -14,6 +14,7 @@ su - $USER -c 'cat > /home/rhel/playbook.yml << EOF
           - snmp-server community ansible-public RO
           - snmp-server community ansible-private RW
           - snmp-server community ansible-test RO
+        save_when: modified
 
 EOF
 cat /home/rhel/playbook.yml'

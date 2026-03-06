@@ -1,3 +1,7 @@
 ---
 name: modules
+title: "Network automation basics: First playbook"
 version: master
+start_page: index.adoc
+nav:
+  - modules/ROOT/nav.adoc
