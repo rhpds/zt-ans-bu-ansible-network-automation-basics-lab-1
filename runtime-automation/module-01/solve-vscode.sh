@@ -13,6 +13,7 @@ su - $USER -c 'cat > /home/rhel/playbook.yml << EOF
         commands:
           - snmp-server community ansible-public RO
           - snmp-server community ansible-private RW
+        save_when: modified
 
 EOF
 cat /home/rhel/playbook.yml'
