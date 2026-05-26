@@ -153,34 +153,5 @@ Host *
 EOF
 cat /home/rhel/.ssh/config'
 
-# --------------------------------------------------------------
-# Save Cisco router config so it persists across stop/restart
-# --------------------------------------------------------------
-su - $USER -c 'cat > /tmp/save-cisco-config.yml << EOF
----
-- name: Save Cisco router startup config
-  hosts: cisco
-  gather_facts: no
-  tasks:
-    - name: Ensure GigabitEthernet2 is configured
-      cisco.ios.ios_config:
-        parents: interface GigabitEthernet2
-        commands:
-          - ip address dhcp
-          - no shutdown
-        save_when: always
-EOF'
-
-echo "Waiting for Cisco router to boot and saving config..."
-RETRIES=30
-DELAY=20
-for i in $(seq 1 $RETRIES); do
-  if su - $USER -c 'ansible-navigator run /tmp/save-cisco-config.yml --mode stdout' 2>&1; then
-    echo "Cisco router config saved successfully (attempt $i/$RETRIES)"
-    break
-  fi
-  echo "Attempt $i/$RETRIES: Cisco router not ready, retrying in ${DELAY}s..."
-  sleep $DELAY
-done
 
 exit 0
