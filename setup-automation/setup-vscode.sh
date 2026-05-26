@@ -152,5 +152,23 @@ Host *
 EOF
 cat /home/rhel/.ssh/config'
 
+# --------------------------------------------------------------
+# Save Cisco router config so it persists across stop/restart
+# --------------------------------------------------------------
+su - $USER -c 'cat > /tmp/save-cisco-config.yml << EOF
+---
+- name: Save Cisco router startup config
+  hosts: cisco
+  gather_facts: no
+  tasks:
+    - name: Wait for cisco router to be reachable
+      ansible.builtin.wait_for_connection:
+        timeout: 600
+
+    - name: Save running config to startup config
+      cisco.ios.ios_config:
+        save_when: always
+EOF
+ansible-navigator run /tmp/save-cisco-config.yml --mode stdout'
 
 exit 0
