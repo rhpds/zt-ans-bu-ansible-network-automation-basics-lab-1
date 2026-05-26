@@ -148,6 +148,7 @@ su - $USER -c 'mkdir /home/$USER/.ssh'
 su - $USER -c 'cat >/home/rhel/.ssh/config << EOF
 Host *
      StrictHostKeyChecking no
+     UserKnownHostsFile /dev/null
      User ansible
 EOF
 cat /home/rhel/.ssh/config'
@@ -161,8 +162,12 @@ su - $USER -c 'cat > /tmp/save-cisco-config.yml << EOF
   hosts: cisco
   gather_facts: no
   tasks:
-    - name: Save running config to startup config
+    - name: Ensure GigabitEthernet2 is configured
       cisco.ios.ios_config:
+        parents: interface GigabitEthernet2
+        commands:
+          - ip address dhcp
+          - no shutdown
         save_when: always
 EOF'
 
