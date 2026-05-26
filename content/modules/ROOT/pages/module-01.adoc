@@ -52,6 +52,7 @@ Multiple plays can exist within an Ansible playbook
     commands:
       - snmp-server community ansible-public RO
       - snmp-server community ansible-private RW
+    save_when: modified
 ----
 
 * *What are they?*
