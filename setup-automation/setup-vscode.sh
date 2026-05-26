@@ -153,18 +153,26 @@ EOF
 cat /home/rhel/.ssh/config'
 
 # --------------------------------------------------------------
-# Save Cisco router config so it persists across stop/restart
+# Wait for Cisco router to be reachable and save its config
 # --------------------------------------------------------------
+echo "Waiting for Cisco router to become reachable..."
+RETRIES=60
+DELAY=10
+for i in $(seq 1 $RETRIES); do
+  if su - $USER -c "ssh -o ConnectTimeout=5 -o StrictHostKeyChecking=no admin@cisco 'show version'" > /dev/null 2>&1; then
+    echo "Cisco router is reachable (attempt $i/$RETRIES)"
+    break
+  fi
+  echo "Attempt $i/$RETRIES: Cisco router not ready, retrying in ${DELAY}s..."
+  sleep $DELAY
+done
+
 su - $USER -c 'cat > /tmp/save-cisco-config.yml << EOF
 ---
 - name: Save Cisco router startup config
   hosts: cisco
   gather_facts: no
   tasks:
-    - name: Wait for cisco router to be reachable
-      ansible.builtin.wait_for_connection:
-        timeout: 600
-
     - name: Save running config to startup config
       cisco.ios.ios_config:
         save_when: always
