@@ -52,7 +52,7 @@ virtualmachines:
         spec:
           source:
             pvc:
-              name: "ans-bu-cisco-rhdp-config-v2"
+              name: "ans-bu-cisco-rhdp-config-v3"
               namespace: cnv-images
           pvc:
             accessModes:
